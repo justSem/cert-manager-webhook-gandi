@@ -9,11 +9,20 @@ on:
     tags:
       - 'v*.*.*'
       - '!v0.1.*'
-
+env:
+  # Use docker.io for Docker Hub if empty
+  REGISTRY: ghcr.io
+  # github.repository as <account>/<repo>
+  IMAGE_NAME: ${{ github.repository }}
+  
 jobs:
   base:
     runs-on: ubuntu-latest
-
+    permissions:
+      contents: read
+      packages: write
+      id-token: write
+      
     outputs:
       go_version: ${{ steps.get_versions.outputs.go_version }}
       build_version: ${{ steps.get_versions.outputs.build_version }}
