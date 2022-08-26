@@ -117,7 +117,7 @@ jobs:
           target: image
           push: ${{ github.event_name != 'pull_request' }}
           build-args: GO_VERSION=${{ needs.base.outputs.go_version }}
-          tags: justSem/cert-manager-webhook-gandi:latest,justSem/cert-manager-webhook-gandi:${{ needs.base.outputs.build_version }}
+          tags: justSem/cert-manager-webhook-gandi:latest
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache-new,mode=max
